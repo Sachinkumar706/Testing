@@ -1,0 +1,20 @@
+{
+  "variable": {
+    "arn": [
+      {
+        "description": "The ARN of the external resource",
+        "type": "string",
+        "nullable": false,
+        "sensitive": false
+      }
+    ],
+    "resource_type": [
+      {
+        "description": "The resource type of the external resource",
+        "type": "string",
+        "nullable": true,
+        "sensitive": false
+      }
+    ]
+  }
+}
