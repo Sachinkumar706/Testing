@@ -1,0 +1,7 @@
+{
+  "app_stack_name": "S3-Lambda-Sachin-appStack-91b1a49f",
+  "iac_type": "Terraform",
+  "provider": "aws",
+  "multi_env": true,
+  "exporter": "terraform"
+}
