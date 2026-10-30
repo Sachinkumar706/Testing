@@ -1,0 +1,20 @@
+name: aiden-pr-opened
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  trigger-aiden:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send the opened pull request to Aiden
+        env:
+          AIDEN_WEBHOOK_TOKEN: ${{ secrets.AIDEN_WEBHOOK_TOKEN }}
+          EVENT_JSON: ${{ toJson(github.event) }}
+        run: |
+          printf '%s' "$EVENT_JSON" > "$RUNNER_TEMP/event.json"
+          curl -sS -X POST "https://stage.dev.stackgen.com/guild/api/v1/webhooks/trigger" \
+            -H "Authorization: Bearer $AIDEN_WEBHOOK_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data-binary @"$RUNNER_TEMP/event.json"
